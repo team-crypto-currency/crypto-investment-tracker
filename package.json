@@ -1,0 +1,30 @@
+{
+  "name": "crypto-investment-tracker",
+  "version": "1.0.0",
+  "description": "This an app to empower investors to organize their trading without having to use an exchange.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/team-crypto-currency/crypto-investment-tracker.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/team-crypto-currency/crypto-investment-tracker/issues"
+  },
+  "homepage": "https://github.com/team-crypto-currency/crypto-investment-tracker#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.2.5",
+    "sequelize-cli": "^6.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.20.0",
+    "nodemon": "^2.0.7"
+  }
+}
