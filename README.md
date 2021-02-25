@@ -32,7 +32,7 @@ Simply click on the deployed application link and type the name of your favorite
 * JavaScript 
 * Node.js
 * jQuery 
-* Bootstrap 
+* Tailwind CSS
 * MySql 
 * Sequelize 
 * Express.js 

@@ -4,6 +4,7 @@
   "description": "This an app to empower investors to organize their trading without having to use an exchange.",
   "main": "server.js",
   "scripts": {
+    "build:css": "tailwind build src/style.css -o public/assets/css/style.css",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
@@ -25,7 +26,10 @@
     "sequelize-cli": "^6.2.0"
   },
   "devDependencies": {
+    "autoprefixer": "^10.2.4",
     "eslint": "^7.20.0",
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "postcss": "^8.2.6",
+    "tailwindcss": "^2.0.3"
   }
 }
