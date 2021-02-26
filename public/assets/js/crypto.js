@@ -65,7 +65,7 @@
 
             for(let i=0;i<response.data.coins.length;i++) {
                 // console.log(coin)
-                if (searchedCoin === response.data.coins[i].name){
+                if (searchedCoin === response.data.coins[i].name || searchedCoin === response.data.coins[i].symbol){
                     console.log(response.data.coins[i].name)
                     thisCoin = response.data.coins[i];
                     console.log(thisCoin)
@@ -84,7 +84,7 @@
             const highPriceToInt = parseFloat(thisCoin.allTimeHigh.price).toFixed(2);
             const currentPrice = $("<p>").text(`Current Price: $${coinPriceToInt}`);
 
-            const change = $("<p>").text(`Change: ${changeVar}`);
+            const change = $("<p>").text(`(Real Time) Change: ${changeVar} %`);
 
             const highMarkTime = `Hit on: ${moment(highestVar).format("MM/DD/YYYY")}`
 
