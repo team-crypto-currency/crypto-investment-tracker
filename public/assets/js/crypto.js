@@ -81,15 +81,29 @@ function renderManyCoins(searchedCoin) {
 
         const highMark = $("<p>").text(`All Time High: $${highPriceToInt} ${highMarkTime}`);
 
+        const saveBtn = $("button").text("Save Coin").addClass("save-btn");
+
 
         $(coinSearch).text(`${coinName} (${currentDate})`);
-        $(coinDetails).append(currentPrice, change, highMark);
+        $(coinDetails).append(currentPrice, change, highMark, saveBtn);
 
         renderMACD(coinABRV);
 
   });
 
 }
+
+$(".save-btn").on("click", function(event) {
+    event.preventDefault();
+    // If the user is not signed in, take them to the sign in page
+    // location.redirect("/sign-in") -doesn't work ??
+    // If the user is signed in, take them to their saved-coins page/portfolio
+
+});
+
+
+
+
 
 function renderMACD(coin){
     console.log("abrev: ", coin);
