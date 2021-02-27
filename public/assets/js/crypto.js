@@ -101,6 +101,25 @@ $(saveBtn).on("click", function(event) {
     // If the user is signed in, take them to their saved-coins page/portfolio
 });
 
+$(".signup").on("click", async function(event) {
+    event.preventDefault();
+        // Default options are marked with *
+    const response = await fetch("/api/user", {
+        method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        credentials: 'same-origin',
+        headers: {
+        'Content-Type': 'application/json'
+        },
+        redirect: 'follow', 
+        referrerPolicy: 'no-referrer',
+        body: JSON.stringify({username: "Masha"}) 
+    });
+    console.log(response)
+})
+
+
 
 
 
