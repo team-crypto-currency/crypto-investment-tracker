@@ -103,7 +103,7 @@ $(saveBtn).on("click", function(event) {
 
 $(".signup").on("click", async function(event) {
     event.preventDefault();
-        // Default options are marked with *
+     let userInput = $('.user-input').val().trim();
     const response = await fetch("/api/user", {
         method: 'POST',
         mode: 'cors',
@@ -114,7 +114,7 @@ $(".signup").on("click", async function(event) {
         },
         redirect: 'follow', 
         referrerPolicy: 'no-referrer',
-        body: JSON.stringify({username: "Masha"}) 
+        body: JSON.stringify({username: `${userInput}`}) 
     });
     console.log(response)
 })
