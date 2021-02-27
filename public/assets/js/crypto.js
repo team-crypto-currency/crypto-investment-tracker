@@ -40,6 +40,7 @@ const searchBox = $(".searchFld");
 const coinSearch = $(".currentSrch");
 const coinDetails = $(".coinDetail");
 const currentDate = (moment().format("M/D/YY"));
+const saveBtn = $("<button>").text("Save Coin").addClass("save-btn");
 
 searchBtn.click(function(){
     const searchedCoin = $(searchBox).val();
@@ -81,7 +82,6 @@ function renderManyCoins(searchedCoin) {
 
         const highMark = $("<p>").text(`All Time High: $${highPriceToInt} ${highMarkTime}`);
 
-        const saveBtn = $("button").text("Save Coin").addClass("save-btn");
 
 
         $(coinSearch).text(`${coinName} (${currentDate})`);
@@ -93,12 +93,12 @@ function renderManyCoins(searchedCoin) {
 
 }
 
-$(".save-btn").on("click", function(event) {
+$(saveBtn).on("click", function(event) {
     event.preventDefault();
+    alert("I've been clicked!");
     // If the user is not signed in, take them to the sign in page
-    // location.redirect("/sign-in") -doesn't work ??
+    window.location.replace("/sign-in");
     // If the user is signed in, take them to their saved-coins page/portfolio
-
 });
 
 
