@@ -1,23 +1,21 @@
 // const coinABRV = require("./crypto-investment-tracker/public/assets/js/crypto.js");
 const axios = require('axios');
+const user = require('../models');
 
 module.exports = (app) => {
 
+  // Api route to render index.handlebars (dashboard page)
     app.get('/', (req, res) => res.render('index'));
   
-    // app.get('/api/waitlist', (req, res) => res.json(waitListData));
-  
-    // app.post('/', (req, res) => {
-  
-    //     res.send();
-    //   }
-    // });
-  
-  
-//     app.post('/api/', (req, res) => {
 
-//       res.json();
-//     });
+  // Api route to add user
+    app.post('/api/user', (req, res) => {
+      console.log('User Data:', req.body);
+      user.create({
+       username: req.body.username
+      }).then((results) => res.json(results));
+    });
+  
   
 
 

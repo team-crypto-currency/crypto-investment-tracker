@@ -96,6 +96,7 @@ function renderManyCoins(searchedCoin) {
 $(".save-btn").on("click", function(event) {
     event.preventDefault();
     // If the user is not signed in, take them to the sign in page
+    // location.redirect("/sign-in") -doesn't work ??
     // If the user is signed in, take them to their saved-coins page/portfolio
 
 });
