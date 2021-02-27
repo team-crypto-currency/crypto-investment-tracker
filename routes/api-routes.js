@@ -1,6 +1,6 @@
 // const coinABRV = require("./crypto-investment-tracker/public/assets/js/crypto.js");
 const axios = require('axios');
-const user = require('../models');
+const db = require('../models');
 
 module.exports = (app) => {
 
@@ -11,7 +11,7 @@ module.exports = (app) => {
   // Api route to add user
     app.post('/api/user', (req, res) => {
       console.log('User Data:', req.body);
-      user.create({
+      db.User.create({
        username: req.body.username
       }).then((results) => res.json(results));
     });
