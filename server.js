@@ -1,6 +1,8 @@
 const express = require('express');
 const path = require('path');
 const exphbs = require('express-handlebars');
+const sequelize = require('sequelize');
+const db = require('./models');
 
 const app = express();
 
@@ -22,7 +24,7 @@ require('./routes/api-routes.js')(app);
 // require('./routes/html-routes.js')(app);
 
 
-// Set server to listen for requests/ ? Do we need db.sync for sequelize for this to create tables?
-app.listen(PORT, () => {
-    console.log(`App listening on URL: http://localhost:${PORT}`);
+// Syncing our sequelize models and then starting our express app
+db.sequelize.sync().then( () => { 
+  app.listen(PORT, () => console.log(`App listening on URL: http://localhost:${PORT}`));
   });
