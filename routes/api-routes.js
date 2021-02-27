@@ -17,10 +17,6 @@ module.exports = (app) => {
     });
   
 
-    
-  
-
-
   // MACD call from taapi
   app.get('/api/coin/:coin', (req, res) => {
     // Require axios: npm i axios
