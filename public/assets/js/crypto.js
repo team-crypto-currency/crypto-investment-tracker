@@ -1,19 +1,14 @@
-// Create an ajax call with jQuery to test apis
-// Taapi.io for indicators
-
+// Successful api call for coins/prices! with coin-ranking api (See console in browser)
 const searchBtn = $(".searchBtn");
 const searchBox = $(".searchFld");
 const saveBtn = $("<button>").text("Save Coin").addClass("save-btn");
-
 const coinSearch = $(".currentSrch");
 const currentDate = (moment().format("M/D/YY"));
 const coinDetails = $(".coinDetail");
-
 const rsiDiv = $(".rsi");
 const macdDiv = $(".macd");
 const emaDiv = $(".ema");
 const smaDiv = $(".sma");
-
 
 
 
@@ -85,6 +80,10 @@ function renderEMA(coin){
   };
   $.ajax(settings3).done(function (response) {
 
+    $(coinSearch).text(`${coinName} (${currentDate})`);
+    $(coinDetails).append(currentPrice, change, highMark, saveBtn);
+
+    renderMACD(coinABRV);
     console.log("EMA:", response);
     const emaTitle = $("<h1>").text("EMA");
     const emaValue = $("<p>").text(`Value: ${parseFloat(response.value).toFixed(2)}`);
@@ -93,6 +92,7 @@ function renderEMA(coin){
 
   });
 }
+
 
 // SMA
 function renderSMA(coin){
@@ -112,6 +112,7 @@ function renderSMA(coin){
 
   });
 }
+
 
 let thisCoin;
 function renderManyCoins(searchedCoin) {
@@ -179,4 +180,22 @@ $(".signup").on("click", async function(event) {
     body: JSON.stringify({username: `${userInput}`})
   });
   console.log(response);
+});
+
+$(".sign-in").on("click", async function() {
+  // search through the database and compare what the user entered to the usernames in the database
+  // Once we find their username, pull all of the saved coins for that User
+  // Display all saved coins on /coins route page
+//   const response = await fetch("/api/user/:id", {
+//     method: "GET",
+//     mode: "cors",
+//     cache: "no-cache",
+//     credentials: "same-origin",
+//     headers: {
+//       "Content-Type": "application/json"
+//     },
+//     redirect: "follow",
+//     referrerPolicy: "no-referrer",
+//     body: JSON.stringify({Coin: name})
+//   });
 });
