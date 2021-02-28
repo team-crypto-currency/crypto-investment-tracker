@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-{   
-=======
 {
->>>>>>> main
     "parserOptions": {
         "ecmaVersion": 2017
     },
@@ -28,13 +24,8 @@
         "no-trailing-spaces": "error",
         "default-case": "error",
         "no-fallthrough": "error",
-<<<<<<< HEAD
-        "no-unused-vars": 0,
-        "no-use-before-define": "off",
-=======
         "no-unused-vars": "error",
         "no-use-before-define": "error",
->>>>>>> main
         "no-redeclare": "error",
         "camelcase": "off",
         "brace-style": "error",
