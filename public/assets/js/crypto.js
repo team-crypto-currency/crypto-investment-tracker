@@ -3,43 +3,39 @@ const searchBtn = $(".searchBtn");
 const searchBox = $(".searchFld");
 const saveBtn = $("<button>").text("Save Coin").addClass("save-btn");
 const coinSearch = $(".currentSrch");
-const currentDate = (moment().format("M/D/YY"));
+const currentDate = moment().format("M/D/YY");
 const coinDetails = $(".coinDetail");
 const rsiDiv = $(".rsi");
 const macdDiv = $(".macd");
 const emaDiv = $(".ema");
 const smaDiv = $(".sma");
 
-
-
 // Successful api call for coins/prices! with coin-ranking api (See console in browser)
 const settings = {
-  "async": true,
-  "crossDomain": true,
-  "url": "https://coinranking1.p.rapidapi.com/coins/",
-  "method": "GET",
-  "headers": {
+  async: true,
+  crossDomain: true,
+  url: "https://coinranking1.p.rapidapi.com/coins/",
+  method: "GET",
+  headers: {
     "x-rapidapi-key": "198c5d9404msh8afbdbe95aa7f12p115299jsn1d3f7e17a3ea",
-    "x-rapidapi-host": "coinranking1.p.rapidapi.com"
-  }
+    "x-rapidapi-host": "coinranking1.p.rapidapi.com",
+  },
 };
 // use this ajax call to display all data if need be
 // $.ajax(settings).done(function (response) {
 //   console.log("ajax1:", response);
 // });
 
-
 // MACD
-function renderMACD(coin){
+function renderMACD(coin) {
   console.log("abrev: ", coin);
   const settings3 = {
-    "async": true,
-    "crossDomain": true,
-    "url": `/api/coin/macd/${coin}`,
-    "method": "GET",
+    async: true,
+    crossDomain: true,
+    url: `/api/coin/macd/${coin}`,
+    method: "GET",
   };
   $.ajax(settings3).done(function (response) {
-
     console.log("MACD:", response);
     const macdTitle = $("<h1>").text("MACD");
     const macdValue = $("<p>").text(`Value: ${parseFloat(response.valueMACD).toFixed(2)}`);
@@ -47,39 +43,35 @@ function renderMACD(coin){
     const macdHistogram = $("<p>").text(`Histogram: ${parseFloat(response.valueMACDHist).toFixed(2)}`);
 
     $(macdDiv).append(macdTitle, macdValue, macdSignal, macdHistogram);
-
   });
 }
 
 // RSI
-function renderRSI(coin){
+function renderRSI(coin) {
   const settings3 = {
-    "async": true,
-    "crossDomain": true,
-    "url": `/api/coin/rsi/${coin}`,
-    "method": "GET",
+    async: true,
+    crossDomain: true,
+    url: `/api/coin/rsi/${coin}`,
+    method: "GET",
   };
   $.ajax(settings3).done(function (response) {
-
     console.log("RSI:", response);
     const rsiTitle = $("<h1>").text("RSI");
     const rsiValue = $("<p>").text(`Value: ${parseFloat(response.value).toFixed(2)}`);
 
     $(rsiDiv).append(rsiTitle, rsiValue);
-
   });
 }
 
 // EMA
-function renderEMA(coin){
+function renderEMA(coin) {
   const settings3 = {
-    "async": true,
-    "crossDomain": true,
-    "url": `/api/coin/ema/${coin}`,
-    "method": "GET",
+    async: true,
+    crossDomain: true,
+    url: `/api/coin/ema/${coin}`,
+    method: "GET",
   };
   $.ajax(settings3).done(function (response) {
-
     $(coinSearch).text(`${coinName} (${currentDate})`);
     $(coinDetails).append(currentPrice, change, highMark, saveBtn);
 
@@ -89,38 +81,32 @@ function renderEMA(coin){
     const emaValue = $("<p>").text(`Value: ${parseFloat(response.value).toFixed(2)}`);
 
     $(emaDiv).append(emaTitle, emaValue);
-
   });
 }
 
-
 // SMA
-function renderSMA(coin){
+function renderSMA(coin) {
   const settings3 = {
-    "async": true,
-    "crossDomain": true,
-    "url": `/api/coin/sma/${coin}`,
-    "method": "GET",
+    async: true,
+    crossDomain: true,
+    url: `/api/coin/sma/${coin}`,
+    method: "GET",
   };
   $.ajax(settings3).done(function (response) {
-
     console.log("SMA:", response);
     const smaTitle = $("<h1>").text("SMA");
     const smaValue = $("<p>").text(`Value: ${parseFloat(response.value).toFixed(2)}`);
 
     $(smaDiv).append(smaTitle, smaValue);
-
   });
 }
 
-
 let thisCoin;
 function renderManyCoins(searchedCoin) {
-  $.ajax(settings).then(function(response) {
-
-    for(let i=0;i<response.data.coins.length;i++) {
+  $.ajax(settings).then(function (response) {
+    for (let i = 0; i < response.data.coins.length; i++) {
       // console.log(coin)
-      if (searchedCoin === response.data.coins[i].name){
+      if (searchedCoin === response.data.coins[i].name) {
         console.log("user search name match: ", response.data.coins[i].name);
         thisCoin = response.data.coins[i];
         console.log("this coin: ", thisCoin);
@@ -148,7 +134,7 @@ function renderManyCoins(searchedCoin) {
   });
 }
 
-searchBtn.click(function(){
+searchBtn.click(function () {
   const searchedCoin = $(searchBox).val();
   coinDetails.empty();
   macdDiv.empty();
@@ -158,7 +144,7 @@ searchBtn.click(function(){
   renderManyCoins(searchedCoin);
 });
 
-$(saveBtn).on("click", function(event) {
+$(saveBtn).on("click", function (event) {
   event.preventDefault();
   alert("I've been clicked!");
   // If the user is not signed in, take them to the sign in page
@@ -166,36 +152,42 @@ $(saveBtn).on("click", function(event) {
   // If the user is signed in, take them to their saved-coins page/portfolio
 });
 
-$(".signup").on("click", async function(event) {
+$(".signup").on("click", async function (event) {
   event.preventDefault();
-  let userInput = $(".user-input").val().trim();
+  const userInput = $(".user-input").val().trim();
   const response = await fetch("/api/user", {
     method: "POST",
     mode: "cors",
     cache: "no-cache",
     credentials: "same-origin",
-    headers: {"Content-Type": "application/json"},
+    headers: { "Content-Type": "application/json" },
     redirect: "follow",
     referrerPolicy: "no-referrer",
-    body: JSON.stringify({username: `${userInput}`})
+    body: JSON.stringify({ username: `${userInput}` }),
   });
   console.log(response);
 });
 
-$(".sign-in").on("click", async function() {
+$(".sign-in").on("click", async function () {
   // search through the database and compare what the user entered to the usernames in the database
   // Once we find their username, pull all of the saved coins for that User
   // Display all saved coins on /coins route page
-//   const response = await fetch("/api/user/:id", {
-//     method: "GET",
-//     mode: "cors",
-//     cache: "no-cache",
-//     credentials: "same-origin",
-//     headers: {
-//       "Content-Type": "application/json"
-//     },
-//     redirect: "follow",
-//     referrerPolicy: "no-referrer",
-//     body: JSON.stringify({Coin: name})
-//   });
+  //   const response = await fetch("/api/user/3", {
+  //     method: "GET",
+  //     mode: "cors",
+  //     cache: "no-cache",
+  //     credentials: "same-origin",
+  //     headers: {
+  //       "Content-Type": "application/json"
+  //     },
+  //     redirect: "follow",
+  //     referrerPolicy: "no-referrer",
+  //     body: JSON.stringify({Coin: name})
+  //   });
+  //   console.log(response);
+
+  fetch("/api/user/3")
+    .then((response) => response.json())
+    .then((data) => console.log(data))
+    .catch((err) => console.error(err));
 });

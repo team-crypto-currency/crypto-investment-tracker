@@ -8,13 +8,23 @@ module.exports = (app) => {
   app.get("/", (req, res) => res.render("index"));
 
 
-  // Api route to add user
+  // Api route to add user to database
   app.post("/api/user", (req, res) => {
     console.log("User Data:", req.body);
     db.User.create({
       username: req.body.username
     }).then((results) => res.json(results));
   });
+
+  // Api route to add coin to database
+  app.post("/api/coin", (req, res) => {
+    console.log("Coin Data:", req.body);
+    db.Coin.create({
+      name: req.body.name,
+      UserId: req.body.UserId
+    }).then((results) => res.json(results));
+  });
+
 
   // Api route to get user by id and return their coins
   app.get("/api/user/:id", (req, res) => {
