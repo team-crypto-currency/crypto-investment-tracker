@@ -168,19 +168,6 @@ $(".sign-in").on("click", async function () {
   // search through the database and compare what the user entered to the usernames in the database
   // Once we find their username, pull all of the saved coins for that User
   // Display all saved coins on /coins route page
-  //   const response = await fetch("/api/user/3", {
-  //     method: "GET",
-  //     mode: "cors",
-  //     cache: "no-cache",
-  //     credentials: "same-origin",
-  //     headers: {
-  //       "Content-Type": "application/json"
-  //     },
-  //     redirect: "follow",
-  //     referrerPolicy: "no-referrer",
-  //     body: JSON.stringify({Coin: name})
-  //   });
-  //   console.log(response);
 
   fetch("/api/user/3")
     .then((response) => response.json())
