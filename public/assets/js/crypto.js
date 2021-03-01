@@ -75,7 +75,6 @@ function renderEMA(coin) {
     $(coinSearch).text(`${coinName} (${currentDate})`);
     $(coinDetails).append(currentPrice, change, highMark, saveBtn);
 
-    renderMACD(coinABRV);
     console.log("EMA:", response);
     const emaTitle = $("<h1>").text("EMA");
     const emaValue = $("<p>").text(`Value: ${parseFloat(response.value).toFixed(2)}`);
