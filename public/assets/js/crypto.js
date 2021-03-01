@@ -168,13 +168,21 @@ $(".signup").on("click", async function (event) {
   console.log(response);
 });
 
+
+
+// const userInput = $("#userInput").val().trim();
 $(".sign-in").on("click", async function () {
   // search through the database and compare what the user entered to the usernames in the database
   // Once we find their username, pull all of the saved coins for that User
   // Display all saved coins on /coins route page
 
-  fetch("/api/user/3")
+  fetch("/api/user")
     .then((response) => response.json())
-    .then((data) => console.log(data))
+    .then(function(data) {
+      console.log(data);
+      for(let i=0; i< data.length; i++) {
+        console.log(data[i].Coins);
+      }
+    })
     .catch((err) => console.error(err));
 });
