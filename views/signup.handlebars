@@ -3,8 +3,22 @@
 <h2>Choose a username to save your coins to.</h2>
 
 <div>
-    <form>
-        <input class="searchFld py-2 rounded user-input" type="text" placeholder="username">
+    <form class="signup">
+        <div class="form-group">
+            <label for="exampleUsername1">Username</label>
+            <input class="searchFld py-2 rounded usernameInput" type="text" placeholder="username">
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="searchFld py-2 rounded user-input" id="email-input" placeholder="Email">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="searchFld py-2 rounded user-input" id="password-input" placeholder="Password">
+        </div>
+        <button class="signup" type="submit">Sign Up</button>
     </form>
-    <span><button class="signup">Sign Up</button></span>
+
+     <p>Or sign in <a href="/sign-in">here</a></p>
 </div>

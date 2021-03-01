@@ -24,8 +24,8 @@
         "no-trailing-spaces": "error",
         "default-case": "error",
         "no-fallthrough": "error",
-        "no-unused-vars": "error",
-        "no-use-before-define": "error",
+        "no-unused-vars": "off",
+        "no-use-before-define": "off",
         "no-redeclare": "error",
         "camelcase": "off",
         "brace-style": "error",
@@ -34,7 +34,7 @@
             2
         ],
         "linebreak-style": [
-            "error",
+            "off",
             "unix"
         ],
         "quotes": [
