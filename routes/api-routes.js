@@ -25,6 +25,13 @@ module.exports = (app) => {
     }).then((results) => res.json(results));
   });
 
+  // Api route to find all users
+  app.get("/api/user", (req, res) => {
+    db.User.findAll({
+      include: [db.Coin],
+    }).then((dbUser) => res.json(dbUser));
+  });
+
 
   // Api route to get user by id and return their coins
   app.get("/api/user/:id", (req, res) => {
