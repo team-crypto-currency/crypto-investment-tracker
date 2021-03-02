@@ -1,4 +1,4 @@
-// Successful api call for coins/prices! with coin-ranking api (See console in browser)
+// Global Variables
 const searchBtn = $(".searchBtn");
 const searchBox = $(".searchFld");
 const saveBtn = $("<button>").text("Save Coin").addClass("save-btn");
@@ -10,7 +10,7 @@ const macdDiv = $(".macd");
 const emaDiv = $(".ema");
 const smaDiv = $(".sma");
 
-// Successful api call for coins/prices! with coin-ranking api (See console in browser)
+// Defines settings for api calls
 const settings = {
   async: true,
   crossDomain: true,
@@ -21,6 +21,7 @@ const settings = {
     "x-rapidapi-host": "coinranking1.p.rapidapi.com",
   },
 };
+
 // use this ajax call to display all data if need be
 // $.ajax(settings).done(function (response) {
 //   console.log("ajax1:", response);
@@ -138,46 +139,6 @@ searchBtn.click(function () {
   emaDiv.empty();
   smaDiv.empty();
   renderManyCoins(searchedCoin);
-});
-
-
-$(saveBtn).on("click", function (event) {
-  event.preventDefault();
-  alert("I've been clicked!");
-  // Save the coin the user searched for
-  const coinName = $(".coinName").val().trim();
-  const requestOptions = {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ name: coinName, UserId: 1 })
-  };
-  fetch("/api/coin", requestOptions)
-    .then(response => response.json())
-    .then(data => this.setState({ postId: data.id }));
-  // If the user is not signed in, take them to the sign in page
-  window.location.replace("/sign-in");
-  // If the user is signed in, take them to their saved-coins page/portfolio
-});
-
-
-
-// const userInput = $("#userInput").val().trim();
-$(".sign-in").on("click", async function () {
-  // search through the database and compare what the user entered to the usernames in the database
-  // Once we find their username, pull all of the saved coins for that User
-  // Display all saved coins on /coins route page
-  const userInput = $("#userInput").val().trim();
-  fetch("/api/user")
-    .then((response) => response.json())
-    .then(function(data) {
-      console.log(data);
-      for(let i=0; i< data.length; i++) {
-        if(data[i].username === userInput) {
-          console.log(data[i].Coins);
-        }
-      }
-    })
-    .catch((err) => console.error(err));
 });
 
 
