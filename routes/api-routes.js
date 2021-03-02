@@ -18,6 +18,15 @@ module.exports = (app) => {
     }).then((results) => res.json(results));
   });
 
+  // Api route to find coins based on user
+  app.get("/api/coin", (req, res) => {
+    db.Coin.findAll({
+      where: {
+        UserId: req.user.id
+      }
+    }).then((dbCoin) => res.json(dbCoin));
+  });
+
   // Api route to find all users
   app.get("/api/user", (req, res) => {
     db.User.findAll({

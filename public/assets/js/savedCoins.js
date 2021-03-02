@@ -32,13 +32,10 @@ fetch("/api/user")
 
 // Function to render saved coins on coins page
 function renderSavedCoins(coins) {
-  fetch("/api/user")
+  fetch("/api/coin")
     .then((response) => response.json())
     .then(function(data) {
       console.log(data);
-      for(let i=0; i< data.length; i++) {
-        console.log(data[i].Coins);
-      }
     })
     .catch((err) => console.error(err));
 
