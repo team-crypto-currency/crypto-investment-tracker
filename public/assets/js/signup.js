@@ -1,7 +1,7 @@
 $(document).ready(function() {
   // Getting references to our form and input
   var signUpForm = $("form.signup");
-  var usernameInput =$(".usernameInput");
+  //  var usernameInput =$(".usernameInput");
   var emailInput = $("input#email-input");
   var passwordInput = $("input#password-input");
 
@@ -10,7 +10,7 @@ $(document).ready(function() {
     event.preventDefault();
     alert("I've been submitted!");
     var userData = {
-      username: usernameInput.val().trim(),
+    //   username: usernameInput.val().trim(),
       email: emailInput.val().trim(),
       password: passwordInput.val().trim()
     };
@@ -26,9 +26,9 @@ $(document).ready(function() {
 
   // Does a post to the signup route. If successful, we are redirected to the members page
   // Otherwise we log any errors
-  function signUpUser(username, email, password) {
+  function signUpUser(email, password) {
     $.post("/api/signup", {
-      username: username,
+    //   username: username,
       email: email,
       password: password
     })
@@ -40,7 +40,6 @@ $(document).ready(function() {
   }
 
   function handleLoginErr(err) {
-    $("#alert .msg").text(err.responseJSON);
-    $("#alert").fadeIn(500);
+    console.log(err.responseJSON);
   }
 });

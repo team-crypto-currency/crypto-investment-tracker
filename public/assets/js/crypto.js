@@ -184,3 +184,9 @@ $(".sign-in").on("click", async function () {
     })
     .catch((err) => console.error(err));
 });
+
+
+// Lets the user sign-out
+$.get("/api/user_data").then(function(data) {
+  $(".member-name").text(data.email);
+});
