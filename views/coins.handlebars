@@ -1,11 +1,11 @@
-<p><a href="/sign-out">Logout</a></p>
-<p><a href="/">Dashboard</a></p>
-
+{{>header}}
 <h1>Saved Coins</h1>
 
 <ul>
   {{#each coins}}
-    <li>{{ coins }} </li>
-    <button>Log A Deposit</button>
+    <li>{{ coin }} </li>
+    <button>View Details</button>
   {{/each}}
 </ul>
+
+{{>footer}}
