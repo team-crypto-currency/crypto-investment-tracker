@@ -140,29 +140,24 @@ searchBtn.click(function () {
   renderManyCoins(searchedCoin);
 });
 
+
 $(saveBtn).on("click", function (event) {
   event.preventDefault();
   alert("I've been clicked!");
+  // Save the coin the user searched for
+  const coinName = $(".coinName").val().trim();
+  const requestOptions = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ name: coinName, UserId: 1 })
+  };
+  fetch("/api/coin", requestOptions)
+    .then(response => response.json())
+    .then(data => this.setState({ postId: data.id }));
   // If the user is not signed in, take them to the sign in page
   window.location.replace("/sign-in");
   // If the user is signed in, take them to their saved-coins page/portfolio
 });
-
-// $(".signup").on("click", async function (event) {
-//   event.preventDefault();
-//   const userInput = $(".user-input").val().trim();
-//   const response = await fetch("/api/user", {
-//     method: "POST",
-//     mode: "cors",
-//     cache: "no-cache",
-//     credentials: "same-origin",
-//     headers: { "Content-Type": "application/json" },
-//     redirect: "follow",
-//     referrerPolicy: "no-referrer",
-//     body: JSON.stringify({ username: `${userInput}` }),
-//   });
-//   console.log(response);
-// });
 
 
 

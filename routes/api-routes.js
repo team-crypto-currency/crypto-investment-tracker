@@ -9,14 +9,6 @@ module.exports = (app) => {
 
 
 
-  // Api route to add user to database
-  // app.post("/api/user", (req, res) => {
-  //   console.log("User Data:", req.body);
-  //   db.User.create({
-  //     username: req.body.username
-  //   }).then((results) => res.json(results));
-  // });
-
   // Api route to add coin to database
   app.post("/api/coin", (req, res) => {
     console.log("Coin Data:", req.body);

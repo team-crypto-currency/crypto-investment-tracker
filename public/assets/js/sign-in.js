@@ -8,7 +8,6 @@ $(document).ready(function() {
   signInForm.on("submit", function(event) {
     event.preventDefault();
     var userData = {
-      username: usernameInput.val().trim(),
       email: emailInput.val().trim(),
       password: passwordInput.val().trim()
     };
