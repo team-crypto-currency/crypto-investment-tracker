@@ -14,7 +14,7 @@ module.exports = (app) => {
     console.log("Coin Data:", req.body);
     db.Coin.create({
       name: req.body.name,
-      UserId: req.body.UserId
+      UserId: req.user.id
     }).then((results) => res.json(results));
   });
 

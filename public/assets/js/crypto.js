@@ -144,41 +144,46 @@ searchBtn.click(function () {
 $(saveBtn).on("click", function (event) {
   event.preventDefault();
   alert("I've been clicked!");
-  // Save the coin the user searched for
+  // Save the coin the user searched for to our database
   const coinName = $(".coinName").val().trim();
   const requestOptions = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ name: coinName, UserId: 1 })
+    body: JSON.stringify({ name: coinName})
   };
   fetch("/api/coin", requestOptions)
     .then(response => response.json())
     .then(data => this.setState({ postId: data.id }));
+
   // If the user is not signed in, take them to the sign in page
   window.location.replace("/sign-in");
   // If the user is signed in, take them to their saved-coins page/portfolio
 });
 
+// Api call to retreive all user data
+fetch("/api/user")
+  .then((response) => response.json())
+  .then(function(data) {
+    console.log(data);
+    for(let i=0; i< data.length; i++) {
+      console.log(data[i].id);
+    }
+  })
+  .catch((err) => console.error(err));
 
-
-// const userInput = $("#userInput").val().trim();
-$(".sign-in").on("click", async function () {
-  // search through the database and compare what the user entered to the usernames in the database
-  // Once we find their username, pull all of the saved coins for that User
-  // Display all saved coins on /coins route page
-  const userInput = $("#userInput").val().trim();
-  fetch("/api/user")
-    .then((response) => response.json())
-    .then(function(data) {
-      console.log(data);
-      for(let i=0; i< data.length; i++) {
-        if(data[i].username === userInput) {
-          console.log(data[i].Coins);
-        }
-      }
-    })
-    .catch((err) => console.error(err));
-});
+// Api call to display all saved coins in a console.log - but need to render on /coins route page
+//   const userInput = $("#userInput").val().trim();
+//   fetch("/api/user")
+//     .then((response) => response.json())
+//     .then(function(data) {
+//       console.log(data);
+//       for(let i=0; i< data.length; i++) {
+//         if(data[i].username === userInput) {
+//           console.log(data[i].Coins);
+//         }
+//       }
+//     })
+//     .catch((err) => console.error(err));
 
 
 // Lets the user sign-out
