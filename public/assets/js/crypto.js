@@ -163,6 +163,10 @@ renderLandingCoin();
 
 // render bitcoin on home page
 function renderLandingCoin() {
+  macdDiv.empty();
+  rsiDiv.empty();
+  emaDiv.empty();
+  smaDiv.empty();
   $.ajax(settings).then(function (response) {
     for (let i = 0; i < response.data.coins.length; i++) {
       // console.log(coin)
