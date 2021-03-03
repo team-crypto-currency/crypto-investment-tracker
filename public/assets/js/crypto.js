@@ -113,16 +113,26 @@ function renderManyCoins(searchedCoin) {
     const coinName = thisCoin.name;
     const coinABRV = thisCoin.symbol;
     const coinPriceToInt = parseFloat(thisCoin.price).toFixed(2);
-    const changeVar = thisCoin.change;
+    let changeVar = $("<span>").text(`${thisCoin.change}%`);
     const highestVar = thisCoin.allTimeHigh.timestamp;
     const highPriceToInt = parseFloat(thisCoin.allTimeHigh.price).toFixed(2);
     const currentPrice = $("<p>").text(`Current Price: $${coinPriceToInt}`);
-    const change = $("<p>").text(`Change: ${changeVar}`);
+    let change = $("<p>").text("Real Time Change: ").append(changeVar);
     const highMarkTime = `Hit on: ${moment(highestVar).format("MM/DD/YYYY")}`;
     const highMark = $("<p>").text(`All Time High: $${highPriceToInt} ${highMarkTime}`);
 
-    $(coinSearch).text(`${coinName} (${currentDate})`);
-    $(coinDetails).append(currentPrice, change, highMark, saveBtn);
+    if (thisCoin.change > 0){
+      changeVar = $("<span class='text-green-500'>").text(`+${thisCoin.change}%`);
+      change = $("<p>").text("Real Time Change: ").append(changeVar);
+      $(coinDetails).append(currentPrice, change, highMark, saveBtn);
+    } else {
+      changeVar = $("<span class='text-red-700'>").text(`${thisCoin.change}%`);
+      change = $("<p>").text("Real Time Change: ").append(changeVar);
+      $(coinDetails).append(currentPrice, change, highMark, saveBtn);
+    }
+
+    $(coinSearch).text(`${coinName} [${coinABRV}] (${currentDate})`);
+
 
     renderMACD(coinABRV);
     renderRSI(coinABRV);
@@ -146,3 +156,55 @@ searchBtn.click(function () {
 $.get("/api/user_data").then(function(data) {
   $(".member-name").text(data.email);
 });
+
+
+
+renderLandingCoin();
+
+// render bitcoin on home page
+function renderLandingCoin() {
+  $.ajax(settings).then(function (response) {
+    for (let i = 0; i < response.data.coins.length; i++) {
+      // console.log(coin)
+      if (response.data.coins[i].name === "Bitcoin") {
+        thisCoin = response.data.coins[i];
+        console.log("this coin: ", thisCoin);
+      }
+    }
+
+    const coinName = thisCoin.name;
+    const coinABRV = thisCoin.symbol;
+    const coinPriceToInt = parseFloat(thisCoin.price).toFixed(2);
+    let changeVar = $("<span>").text(`${thisCoin.change}%`);
+    const highestVar = thisCoin.allTimeHigh.timestamp;
+    const highPriceToInt = parseFloat(thisCoin.allTimeHigh.price).toFixed(2);
+    const currentPrice = $("<p>").text(`Current Price: $${coinPriceToInt}`);
+    let change = $("<p>").text("Real Time Change: ").append(changeVar);
+    const highMarkTime = `Hit on: ${moment(highestVar).format("MM/DD/YYYY")}`;
+    const highMark = $("<p>").text(`All Time High: $${highPriceToInt} ${highMarkTime}`);
+
+    if (thisCoin.change > 0){
+      changeVar = $("<span class='text-green-500'>").text(`+${thisCoin.change}%`);
+      change = $("<p>").text("Real Time Change: ").append(changeVar);
+      $(coinDetails).append(currentPrice, change, highMark, saveBtn);
+    } else {
+      changeVar = $("<span class='text-red-700'>").text(`${thisCoin.change}%`);
+      change = $("<p>").text("Real Time Change: ").append(changeVar);
+      $(coinDetails).append(currentPrice, change, highMark, saveBtn);
+    }
+
+    $(coinSearch).text(`${coinName} [${coinABRV}] (${currentDate})`);
+
+
+    renderMACD(coinABRV);
+    renderRSI(coinABRV);
+    renderEMA(coinABRV);
+    renderSMA(coinABRV);
+  });
+}
+
+
+
+
+
+
