@@ -1,10 +1,10 @@
 
 {{>header}}
-<h1>Saved Coins</h1>
+<h1 class="text-white">Saved Coins</h1>
 
-<ul>
+<ul class="text-white">
   {{#each coins}}
-    <li>{{ coins }} </li>
+    <li>{{@index}}: {{this}} </li>
     <button>Log A Deposit</button>
   {{/each}}
 </ul>
