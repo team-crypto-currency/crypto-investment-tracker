@@ -1,6 +1,8 @@
 // const coinABRV = require("./crypto-investment-tracker/public/assets/js/crypto.js");
 const axios = require("axios");
 const db = require("../models");
+const isAuthenticated = require("../config/middleware/isAuthenticated");
+
 
 module.exports = (app) => {
 
@@ -18,15 +20,32 @@ module.exports = (app) => {
     }).then((results) => res.json(results));
   });
 
-  // Api route to find coins based on user
-  app.get("/api/coin", (req, res) => {
-    console.log("user id:", req.user.id);
+
+  app.get("/api/coins", isAuthenticated, function(req, res) {
     db.Coin.findAll({
       where: {
         UserId: req.user.id
       }
-    }).then((dbCoin) => res.json(dbCoin));
+    }).then((dbCoin) => {
+      // let coin = JSON.stringify(dbCoin.name);
+      // for(let i = 0; i < dbCoin.length; i++){
+      //   coin = dbCoin[i].name;
+      // }
+      res.json(dbCoin);
+      res.render("coins", { coins: JSON.stringify(coin) });
+      console.log("in render", coin);
+    });
   });
+
+  // Api route to find coins based on user
+  // app.get("/api/coin", (req, res) => {
+  //   console.log("user id:", req.user.id);
+  //   db.Coin.findAll({
+  //     where: {
+  //       UserId: req.user.id
+  //     }
+  //   }).then((dbCoin) => res.json(dbCoin));
+  // });
 
   // Api route to find all users
   app.get("/api/user", (req, res) => {
