@@ -20,6 +20,7 @@ module.exports = (app) => {
 
   // Api route to find coins based on user
   app.get("/api/coin", (req, res) => {
+    console.log("user id:", req.user.id);
     db.Coin.findAll({
       where: {
         UserId: req.user.id
