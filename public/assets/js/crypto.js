@@ -100,6 +100,11 @@ function renderSMA(coin) {
 
 let thisCoin;
 function renderManyCoins(searchedCoin) {
+  coinDetails.empty();
+  macdDiv.empty();
+  rsiDiv.empty();
+  emaDiv.empty();
+  smaDiv.empty();
   $.ajax(settings).then(function (response) {
     for (let i = 0; i < response.data.coins.length; i++) {
       // console.log(coin)
@@ -158,11 +163,6 @@ function renderManyCoins(searchedCoin) {
 
 searchBtn.click(function () {
   const searchedCoin = $(searchBox).val();
-  coinDetails.empty();
-  macdDiv.empty();
-  rsiDiv.empty();
-  emaDiv.empty();
-  smaDiv.empty();
   renderManyCoins(searchedCoin);
 });
 
@@ -177,6 +177,7 @@ renderLandingCoin();
 
 // render bitcoin on home page
 function renderLandingCoin() {
+  coinDetails.empty();
   macdDiv.empty();
   rsiDiv.empty();
   emaDiv.empty();
@@ -219,4 +220,44 @@ function renderLandingCoin() {
     renderEMA(coinABRV);
     renderSMA(coinABRV);
   });
+}
+
+
+let buttonList = [];
+const buttonDump = $(".buttonDump");
+function setCoinButton(searchBarCoin){
+
+  var newButton = $("<button class='py-2 px-4 border-l-4 border-r-4 border-green-500 bg-black rounded-full text-white'>").text(searchBarCoin);
+  buttonList.push(searchBarCoin);
+
+  // retrieving local storage array information
+  var coinHistory = JSON.parse(window.localStorage.getItem("coin-name")) || [];
+
+  // if local storage has the coin already, don't duplicate
+  if (coinHistory.indexOf(searchBarCoin) === -1){
+    coinHistory.push(searchBarCoin);
+    window.localStorage.setItem("coin-name", JSON.stringify(coinHistory));
+    $(buttonDump).append(newButton);
+  }
+
+  // run informative funcitons when city button clicked
+  $(newButton).click(function() {
+    var inputSave = $(this).text();
+    console.log("button click", inputSave);
+    renderManyCoins(inputSave);
+  });
+}
+
+displayLocalButton();
+function displayLocalButton(){
+  var coinHistory = JSON.parse(window.localStorage.getItem("coin-name")) || [];
+
+  for (var i = 0; i < coinHistory.length; i++){
+    var newButton = $("<button class='py-2 px-4 border-l-4 border-r-4 border-green-500 bg-black rounded-full text-white'>").text(coinHistory[i]);
+    $(buttonDump).append(newButton);
+    $(newButton).click(function() {
+      var inputSave = $(this).text();
+      renderManyCoins(inputSave);
+    });
+  }
 }
