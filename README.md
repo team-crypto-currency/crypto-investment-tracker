@@ -3,7 +3,7 @@
 # Crypto Investment Tracker
 
 ## Description
-This is a tool used to empower crypto currency investors to explore the prices of different coins without having to sign up for an exchange. It also allows them to log their deposits into each coin to keep track of their assets and how much they have invested.
+This is a tool used to empower crypto currency investors to explore the prices of different coins without having to sign up for an exchange. The user has the option to save coins and view them on a "Saved Coins" page which is a restricted route via passport-local technology. All user information and saved coins are stored in a MySQL database. This fullstack web application runs on an Express server and is built with the Handlebars.js template engine. 
 
 ## Table of Contents
   - [Installation](#installation)
@@ -29,14 +29,15 @@ Simply click on the deployed application link and type the name of your favorite
 ## Technologies
 * HTML5 
 * CSS3 
-* JavaScript 
-* Node.js
+* JavaScript
 * jQuery 
 * Tailwind CSS
-* MySql 
+* Node.js
+* MySQL
 * Sequelize 
 * Express.js 
 * Handlebars.js
+* Passport/passport-local (for user authentication and password hashing)
 * Heroku
 
 ## License
@@ -48,10 +49,10 @@ Simply click on the deployed application link and type the name of your favorite
   ![License: MIT](https://img.shields.io/badge/License-MIT-9cf)
 
 ## Next Steps
-* Add ability for user to sign in and withdraw
-* Add Total column so user can see total deposits in that coin
-* Caculate what deposit is in that coin/currency
-* Write test for all JavaScript files
+* Add ability for user to log a deposit and log a withdrawal on the "Saved Coins" page
+* Add  a Total column under the user's logged deposits so user can see total deposits in that coin
+* Caculate what each user's deposit in fiat/USD equals in that coin/currency (decimal)
+* Write tests for js files/models
 
 
 ## Authors
