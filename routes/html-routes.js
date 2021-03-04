@@ -1,5 +1,5 @@
 const isAuthenticated = require("../config/middleware/isAuthenticated");
-
+const db = require("../models");
 
 
 module.exports = (app) => {
@@ -8,10 +8,14 @@ module.exports = (app) => {
 
   // app.get("/sign-in", (req, res) => res.render("sign-in")),
 
-  // app.get("/coins", (req, res) => res.render("coins"));
+  // app.get("/coins", (req, res) => res.render("coins", { coins: coins }));
 
   app.get("/coins", isAuthenticated, function(req, res) {
-    res.render("coins");
+    db.Coin.findAll({
+      where: {
+        UserId: req.user.id
+      }
+    }).then((dbCoin) => res.render("coins", { coins: dbCoin }));
   });
 
   app.get("/sign-in", function(req, res) {

@@ -12,11 +12,17 @@ renderSavedCoins();
 //   .catch((err) => console.error(err));
 
 // Function to render saved coins on coins page
-function renderSavedCoins(coins) {
-  fetch("/api/coin")
+// let coins = [];
+function renderSavedCoins(coin) {
+  fetch("/api/coins")
     .then((response) => response.json())
     .then(function(data) {
       console.log(data);
+      for(i=0;i<data.length;i++){
+        // coins.push(data[i].name);
+      }
     })
     .catch((err) => console.error(err));
 }
+
+
