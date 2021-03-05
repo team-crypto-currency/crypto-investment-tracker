@@ -19,7 +19,7 @@ This is a tool used to empower crypto currency investors to explore the prices o
 ``` There are no special steps required to install this application as it is a live, deployed application with a deployment link. ```
 
 ## Deplopyment
-* Deployed Application URL: 
+* Deployed Application URL: https://crypto-investment-tracker.herokuapp.com/
 
 ## Usage
 Simply click on the deployed application link and type the name of your favorite crypto currency coin into the search to get the most current price and information regarding that coin.
