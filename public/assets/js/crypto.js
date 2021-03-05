@@ -162,10 +162,16 @@ function renderManyCoins(searchedCoin) {
 }
 
 searchBtn.click(function () {
-  const searchedCoin = $(searchBox).val();
+  let searchedCoin = $(searchBox).val().trim();
+  searchedCoin = searchedCoin.toLowerCase().replace(/\w\S*/g, (w) => (w.replace(/^\w/, (c) => c.toUpperCase())));
+  console.log("searchedcoin:",searchedCoin);
   renderManyCoins(searchedCoin);
   setCoinButton(searchedCoin);
 });
+
+
+// capitalize each word from user input
+
 
 
 // Lets the user sign-out
