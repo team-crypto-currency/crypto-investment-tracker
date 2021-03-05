@@ -27,13 +27,7 @@ module.exports = (app) => {
         UserId: req.user.id
       }
     }).then((dbCoin) => {
-      // let coin = JSON.stringify(dbCoin.name);
-      // for(let i = 0; i < dbCoin.length; i++){
-      //   coin = dbCoin[i].name;
-      // }
-      //res.json(dbCoin);
-      res.render("coins", { coins: dbCoin });
-      console.log("in render", dbCoin);
+      res.json(dbCoin);
     });
   });
 
