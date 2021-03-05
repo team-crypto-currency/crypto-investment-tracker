@@ -1,5 +1,5 @@
 const isAuthenticated = require("../config/middleware/isAuthenticated");
-
+const db = require("../models");
 
 
 module.exports = (app) => {
@@ -10,7 +10,14 @@ module.exports = (app) => {
 
   // If the user is signed in, let them access the coins route
   app.get("/coins", isAuthenticated, function(req, res) {
-    res.render("coins");
+    db.Coin.findAll({
+      where: {
+        UserId: req.user.id
+      }
+    }).then((dbCoin) => {
+      console.log("rendering coins view");
+      res.render("coins", { coins: dbCoin });
+    });
   });
 
   app.get("/sign-in", function(req, res) {
