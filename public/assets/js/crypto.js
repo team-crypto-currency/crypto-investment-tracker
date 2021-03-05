@@ -164,6 +164,7 @@ function renderManyCoins(searchedCoin) {
 searchBtn.click(function () {
   const searchedCoin = $(searchBox).val();
   renderManyCoins(searchedCoin);
+  setCoinButton(searchedCoin);
 });
 
 
