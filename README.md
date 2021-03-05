@@ -49,6 +49,7 @@ Simply click on the deployed application link and type the name of your favorite
   ![License: MIT](https://img.shields.io/badge/License-MIT-9cf)
 
 ## Next Steps
+* Fix responsiveness for mobile
 * Add ability for user to log a deposit and log a withdrawal on the "Saved Coins" page
 * Add  a Total column under the user's logged deposits so user can see total deposits in that coin
 * Caculate what each user's deposit in fiat/USD equals in that coin/currency (decimal)
