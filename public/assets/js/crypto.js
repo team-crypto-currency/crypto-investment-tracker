@@ -11,6 +11,7 @@ const emaDiv = $(".ema");
 const smaDiv = $(".sma");
 let coinName = $(".coinName").val().trim();
 
+
 // Defines settings for api calls
 const settings = {
   async: true,
@@ -30,6 +31,7 @@ const settings = {
 
 // MACD
 function renderMACD(coin) {
+  const chartIcon = $("<span>").addClass("fas fa-chart-line");
   console.log("abrev: ", coin);
   const settings3 = {
     async: true,
@@ -39,7 +41,7 @@ function renderMACD(coin) {
   };
   $.ajax(settings3).done(function (response) {
     console.log("MACD:", response);
-    const macdTitle = $("<h1>").text("MACD");
+    const macdTitle = $("<h1>").text("MACD ").append(chartIcon);
     const macdValue = $("<p>").text(`Value: ${parseFloat(response.valueMACD).toFixed(2)}`);
     const macdSignal = $("<p>").text(`Signal: ${parseFloat(response.valueMACDSignal).toFixed(2)}`);
     const macdHistogram = $("<p>").text(`Histogram: ${parseFloat(response.valueMACDHist).toFixed(2)}`);
@@ -50,6 +52,8 @@ function renderMACD(coin) {
 
 // RSI
 function renderRSI(coin) {
+  const chartIcon = $("<span>").addClass("fas fa-chart-line");
+
   const settings3 = {
     async: true,
     crossDomain: true,
@@ -58,15 +62,17 @@ function renderRSI(coin) {
   };
   $.ajax(settings3).done(function (response) {
     console.log("RSI:", response);
-    const rsiTitle = $("<h1>").text("RSI");
+    const rsiTitle = $("<h1>").text("RSI ").append(chartIcon);
     const rsiValue = $("<p>").text(`Value: ${parseFloat(response.value).toFixed(2)}`);
 
-    $(rsiDiv).append(rsiTitle, rsiValue);
+    $(rsiDiv).append(rsiTitle.append(chartIcon), rsiValue);
   });
 }
 
 // EMA
 function renderEMA(coin) {
+  const chartIcon = $("<span>").addClass("fas fa-chart-line");
+
   const settings3 = {
     async: true,
     crossDomain: true,
@@ -75,7 +81,7 @@ function renderEMA(coin) {
   };
   $.ajax(settings3).done(function (response) {
     console.log("EMA:", response);
-    const emaTitle = $("<h1>").text("EMA");
+    const emaTitle = $("<h1>").text("EMA ").append(chartIcon);
     const emaValue = $("<p>").text(`Value: ${parseFloat(response.value).toFixed(2)}`);
 
     $(emaDiv).append(emaTitle, emaValue);
@@ -84,6 +90,8 @@ function renderEMA(coin) {
 
 // SMA
 function renderSMA(coin) {
+  const chartIcon =$("<span>").addClass("fas fa-chart-line");
+
   const settings3 = {
     async: true,
     crossDomain: true,
@@ -92,7 +100,7 @@ function renderSMA(coin) {
   };
   $.ajax(settings3).done(function (response) {
     console.log("SMA:", response);
-    const smaTitle = $("<h1>").text("SMA");
+    const smaTitle = $("<h1>").text("SMA ").append(chartIcon);
     const smaValue = $("<p>").text(`Value: ${parseFloat(response.value).toFixed(2)}`);
 
     $(smaDiv).append(smaTitle, smaValue);
@@ -257,7 +265,7 @@ function setCoinButton(searchBarCoin){
   if (coinHistory.indexOf(searchBarCoin) === -1){
     coinHistory.push(searchBarCoin);
     window.localStorage.setItem("coin-name", JSON.stringify(coinHistory));
-    $(buttonDump).append(newButton);
+    // $(buttonDump).append(newButton);
   }
 }
 
