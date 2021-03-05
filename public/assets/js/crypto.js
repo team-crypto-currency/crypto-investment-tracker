@@ -1,7 +1,7 @@
 // Global Variables
 const searchBtn = $(".searchBtn");
 const searchBox = $(".searchFld");
-const saveBtn = $("<button>").text("Save Coin").addClass("save-btn");
+const saveBtn = $("<button>").text("Save Coin").addClass("save-btn py-2 px-4 border-l-4 border-r-4 border-green-500 bg-black rounded-full text-white");
 const coinSearch = $(".currentSrch");
 const currentDate = moment().format("M/D/YY");
 const coinDetails = $(".coinDetail");
@@ -162,9 +162,16 @@ function renderManyCoins(searchedCoin) {
 }
 
 searchBtn.click(function () {
-  const searchedCoin = $(searchBox).val();
+  let searchedCoin = $(searchBox).val().trim();
+  searchedCoin = searchedCoin.toLowerCase().replace(/\w\S*/g, (w) => (w.replace(/^\w/, (c) => c.toUpperCase())));
+  console.log("searchedcoin:",searchedCoin);
   renderManyCoins(searchedCoin);
+  setCoinButton(searchedCoin);
 });
+
+
+// capitalize each word from user input
+
 
 
 // Lets the user sign-out

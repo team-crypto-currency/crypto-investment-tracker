@@ -6,10 +6,9 @@ module.exports = (app) => {
 
   app.get("/signup", (req, res) => res.render("signup")),
 
-  // app.get("/sign-in", (req, res) => res.render("sign-in")),
-
   // app.get("/coins", (req, res) => res.render("coins"));
 
+  // If the user is signed in, let them access the coins route
   app.get("/coins", isAuthenticated, function(req, res) {
     res.render("coins");
   });
@@ -22,7 +21,7 @@ module.exports = (app) => {
     res.render("sign-in");
   });
 
-  // Here we've add our isAuthenticated middleware to this route.
+  // Here we've added our isAuthenticated middleware to this route.
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
   app.get("/coins", isAuthenticated, function(req, res) {
     res.render("signup");
