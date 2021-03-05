@@ -20,7 +20,7 @@ module.exports = (app) => {
     }).then((results) => res.json(results));
   });
 
-
+  // Api route to render coins on coin.handlebars page if user is signed in
   app.get("/api/coins", isAuthenticated, function(req, res) {
     db.Coin.findAll({
       where: {
@@ -31,40 +31,11 @@ module.exports = (app) => {
       // for(let i = 0; i < dbCoin.length; i++){
       //   coin = dbCoin[i].name;
       // }
-      res.json(dbCoin);
-      res.render("coins", { coins: JSON.stringify(coin) });
-      console.log("in render", coin);
+      //res.json(dbCoin);
+      res.render("coins", { coins: dbCoin });
+      console.log("in render", dbCoin);
     });
   });
-
-  // Api route to find coins based on user
-  // app.get("/api/coin", (req, res) => {
-  //   console.log("user id:", req.user.id);
-  //   db.Coin.findAll({
-  //     where: {
-  //       UserId: req.user.id
-  //     }
-  //   }).then((dbCoin) => res.json(dbCoin));
-  // });
-
-  // Api route to find all users
-  app.get("/api/user", (req, res) => {
-    db.User.findAll({
-      include: [db.Coin],
-    }).then((dbUser) => res.json(dbUser));
-  });
-
-
-  // Api route to get user by id and return their coins
-  app.get("/api/user/:id", (req, res) => {
-    db.User.findOne({
-      where: {
-        id: req.params.id,
-      },
-      include: [db.Coin],
-    }).then((dbCoin) => res.json(dbCoin));
-  });
-
 
 
   // RSI
