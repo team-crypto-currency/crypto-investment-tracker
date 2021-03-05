@@ -2,13 +2,14 @@
 const searchBtn = $(".searchBtn");
 const searchBox = $(".searchFld");
 const saveBtn = $("<button>").text("Save Coin").addClass("save-btn py-2 px-4 border-l-4 border-r-4 border-green-500 bg-black rounded-full text-white");
-const coinSearch = $(".currentSrch");
+let coinSearch = $(".currentSrch");
 const currentDate = moment().format("M/D/YY");
 const coinDetails = $(".coinDetail");
 const rsiDiv = $(".rsi");
 const macdDiv = $(".macd");
 const emaDiv = $(".ema");
 const smaDiv = $(".sma");
+let coinName = $(".coinName").val().trim();
 
 // Defines settings for api calls
 const settings = {
@@ -141,7 +142,7 @@ function renderManyCoins(searchedCoin) {
     $(saveBtn).on("click", async function (event) {
       event.preventDefault();
       // Save the coin the user searched for to our database
-      const coinName = $(".coinName").val().trim();
+
       const requestOptions = {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -168,10 +169,6 @@ searchBtn.click(function () {
   renderManyCoins(searchedCoin);
   setCoinButton(searchedCoin);
 });
-
-
-// capitalize each word from user input
-
 
 
 // Lets the user sign-out
@@ -221,6 +218,22 @@ function renderLandingCoin() {
 
     $(coinSearch).text(`${coinName} [${coinABRV}] (${currentDate})`);
 
+    $(saveBtn).on("click", async function (event) {
+      event.preventDefault();
+      // Save the coin the user searched for to our database
+
+      const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: coinName})
+      };
+      await fetch("/api/coin", requestOptions);
+
+      // If the user is not signed in, take them to the sign in page
+      window.location.replace("/sign-in");
+      // If the user is signed in, take them to their saved-coins page/portfolio
+    });
+
 
     renderMACD(coinABRV);
     renderRSI(coinABRV);
@@ -234,11 +247,11 @@ let buttonList = [];
 const buttonDump = $(".buttonDump");
 function setCoinButton(searchBarCoin){
 
-  var newButton = $("<button class='py-2 px-4 border-l-4 border-r-4 border-green-500 bg-black rounded-full text-white'>").text(searchBarCoin);
+  const newButton = $("<button class='py-2 px-4 border-l-4 border-r-4 border-green-500 bg-black rounded-full text-white'>").text(searchBarCoin);
   buttonList.push(searchBarCoin);
 
   // retrieving local storage array information
-  var coinHistory = JSON.parse(window.localStorage.getItem("coin-name")) || [];
+  const coinHistory = JSON.parse(window.localStorage.getItem("coin-name")) || [];
 
   // if local storage has the coin already, don't duplicate
   if (coinHistory.indexOf(searchBarCoin) === -1){
@@ -246,24 +259,19 @@ function setCoinButton(searchBarCoin){
     window.localStorage.setItem("coin-name", JSON.stringify(coinHistory));
     $(buttonDump).append(newButton);
   }
-
-  // run informative funcitons when city button clicked
-  $(newButton).click(function() {
-    var inputSave = $(this).text();
-    console.log("button click", inputSave);
-    renderManyCoins(inputSave);
-  });
 }
 
 displayLocalButton();
 function displayLocalButton(){
-  var coinHistory = JSON.parse(window.localStorage.getItem("coin-name")) || [];
+  const coinHistory = JSON.parse(window.localStorage.getItem("coin-name")) || [];
 
-  for (var i = 0; i < coinHistory.length; i++){
-    var newButton = $("<button class='py-2 px-4 border-l-4 border-r-4 border-green-500 bg-black rounded-full text-white'>").text(coinHistory[i]);
+  for (let i = 0; i < coinHistory.length; i++){
+    const newButton = $("<button class='py-2 px-4 border-l-4 border-r-4 border-green-500 bg-black rounded-full text-white'>").text(coinHistory[i]);
     $(buttonDump).append(newButton);
+
     $(newButton).click(function() {
-      var inputSave = $(this).text();
+      const inputSave = $(this).text();
+      console.log("button click", inputSave);
       renderManyCoins(inputSave);
     });
   }
