@@ -218,6 +218,22 @@ function renderLandingCoin() {
 
     $(coinSearch).text(`${coinName} [${coinABRV}] (${currentDate})`);
 
+    $(saveBtn).on("click", async function (event) {
+      event.preventDefault();
+      // Save the coin the user searched for to our database
+
+      const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: coinName})
+      };
+      await fetch("/api/coin", requestOptions);
+
+      // If the user is not signed in, take them to the sign in page
+      window.location.replace("/sign-in");
+      // If the user is signed in, take them to their saved-coins page/portfolio
+    });
+
 
     renderMACD(coinABRV);
     renderRSI(coinABRV);
