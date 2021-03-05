@@ -247,7 +247,7 @@ let buttonList = [];
 const buttonDump = $(".buttonDump");
 function setCoinButton(searchBarCoin){
 
-  const newButton = $("<button class='py-2 px-4 border-l-4 border-r-4 border-green-500 bg-black rounded-full text-white'>").text(searchBarCoin);
+  const newButton = $("<button class='py-2 px-4 h-10 w-80 border-l-4 border-r-4 border-green-500 bg-black rounded-full text-white'>").text(searchBarCoin);
   buttonList.push(searchBarCoin);
 
   // retrieving local storage array information
@@ -266,7 +266,7 @@ function displayLocalButton(){
   const coinHistory = JSON.parse(window.localStorage.getItem("coin-name")) || [];
 
   for (let i = 0; i < coinHistory.length; i++){
-    const newButton = $("<button class='py-2 px-4 border-l-4 border-r-4 border-green-500 bg-black rounded-full text-white'>").text(coinHistory[i]);
+    const newButton = $("<button class='py-2 px-4 h-10 w-80 border-l-4 border-r-4 border-green-500 bg-black rounded-full text-white space-wide-1'>").text(coinHistory[i]);
     $(buttonDump).append(newButton);
 
     $(newButton).click(function() {
