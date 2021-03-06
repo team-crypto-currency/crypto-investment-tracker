@@ -4,7 +4,8 @@ const db = require("../models");
 
 module.exports = (app) => {
 
-  app.get("/signup", (req, res) => res.render("signup")),
+  app.get("/signup", (req, res) => res.render("signup"));
+  app.get("/team", (req, res) => res.render("team"));
 
   // app.get("/coins", (req, res) => res.render("coins"));
 
@@ -33,7 +34,5 @@ module.exports = (app) => {
   app.get("/coins", isAuthenticated, function(req, res) {
     res.render("signup");
   });
-
-
 
 };
