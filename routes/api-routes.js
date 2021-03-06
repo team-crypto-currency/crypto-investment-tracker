@@ -31,6 +31,7 @@ module.exports = (app) => {
     });
   });
 
+  // Axios calls to bybass cors error in the front-end
 
   // RSI
   app.get("/api/coin/rsi/:coin", (req, res) => {
