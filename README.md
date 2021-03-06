@@ -106,10 +106,12 @@ module.exports = function(req, res, next) {
   ![License: MIT](https://img.shields.io/badge/License-MIT-9cf)
 
 ## Next Steps
-* Fix responsiveness for mobile
-* Add a savedCoins js with a function to render first-time user message if they don't have any saved coins
+* Fix responsiveness for mobile/ipad
 * Add Keydown feature to search
-* Add ability for user to log a deposit and log a withdrawal on the "Saved Coins" page
+* Add feature for the ability for the user to log a deposit and log a withdrawal on the "Saved Coins" page
+* Add routes to update and delete deposits
+* Fix bug of user being able to save the coin twice into the database and therefore have it display twice on saved coins page
+* Hide sign-in and sign-up buttons when the user is signed in
 * Add  a Total column under the user's logged deposits so user can see total deposits in that coin
 * Caculate what each user's deposit in fiat/USD equals in that coin/currency (decimal)
 * Write tests for js files/models
