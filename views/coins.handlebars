@@ -1,11 +1,28 @@
 {{>header2}}
-<h1 class="text-white">Saved Coins</h1>
+<h1 class="text-white"></h1>
 
-<ul class="text-white">
-  {{#each coins}}
-    <li>{{this.dataValues.name}}</li>
-    {{!-- <button>Log A Deposit</button> --}}
-  {{/each}}
-</ul>
 
+
+ <div class="text-white text-7xl font-semibold flex items-center justify-center pb-10">Portfolio
+    </div>
+{{!-- <h2 class= "text-white flex justify-center">Sign in to your account</h2> --}}
+<div class="h-screen w-screen flex justify-center">
+   
+    <form class="sign-in text-white col-flex justify-center space-y-6">  
+    	<div class="grid gap-7 sm:grid-cols-1 lg:grid-cols-2 pb-36">
+			<div class="p-10 rounded shadow-sm border-green-500 border-r-4 border-l-4 rounded-b-3xl rounded-t-3xl border-opacity-75 mt-10 mx-0.5 justify-center">
+				<div class="flex items-center pt-1 justify-center">
+					<ul class="text-white">
+            {{#each coins}}
+              <li>{{this.dataValues.name}}</li>
+              {{!-- <button>Log A Deposit</button> --}}
+            {{/each}}
+          </ul>
+				</div>
+			</div>
+		</div>
+    </form>
+
+</div>
 {{>footer}}
+
