@@ -16,8 +16,17 @@ module.exports = (app) => {
         UserId: req.user.id
       }
     }).then((dbCoin) => {
-      console.log("rendering coins view");
-      res.render("coins", { coins: dbCoin });
+      console.log("rendering coins view: ", dbCoin);
+      if (dbCoin.length === 0){
+        dbCoin = [{
+          dataValues: {
+            name: "You don't have any coins saved yet! Return to Dashboard to search and save coins.",
+          }}];
+        res.render("coins", {coins: dbCoin});
+        console.log("nothing saved");
+      } else{
+        res.render("coins", { coins: dbCoin });
+      }
     });
   });
 
