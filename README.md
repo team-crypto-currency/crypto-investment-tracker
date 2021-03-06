@@ -52,7 +52,7 @@ Simply click on the deployed application link and type the name of your favorite
   app.get("/api/coin/rsi/:coin", (req, res) => {
     axios.get("https://api.taapi.io/rsi", {
       params: {
-        secret: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhheWxleXdhaGxyb29zMTVAZ21haWwuY29tIiwiaWF0IjoxNjE0MjA5MzM2LCJleHAiOjc5MjE0MDkzMzZ9.50_xPRl8-tZzpRANXRWBf9VAb2GV31wWyOdIHyZJtD4",
+        secret: "removed",
         exchange: "binance",
         symbol: `${req.params.coin}/USDT`,
         interval: "1h",
