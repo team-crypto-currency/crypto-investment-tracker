@@ -19,7 +19,7 @@ This is a tool used to empower potential crypto currency investors to explore th
 ## Installation
 ``` There are no special steps required to install this application as it is a live, deployed application with a deployment link. ```
 
-## Deplopyment
+## Deployment
 * Deployed Application URL: https://crypto-investment-tracker.herokuapp.com/
 
 ## Usage
@@ -42,6 +42,13 @@ Simply click on the deployed application link and type the name of your favorite
 * Handlebars.js
 * Passport/passport-local (for user authentication and password hashing)
 * Heroku
+* APIs:
+  * Coin Rainking: https://developers.coinranking.com/api/documentation/
+  * Taapi: https://taapi.io/
+    * MACD: https://taapi.io/indicators/macd/
+    * RSI: https://taapi.io/indicators/relative-strength-index-rsi/
+    * EMA: https://taapi.io/indicators/exponential-moving-average/
+    * SMA: https://taapi.io/indicators/simple-moving-average/
 
 ## Code Snippets
 ### Axios
