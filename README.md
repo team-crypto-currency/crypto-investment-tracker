@@ -117,11 +117,13 @@ module.exports = function(req, res, next) {
 * Add Keydown feature to search
 * Add feature for the ability for the user to log a deposit and log a withdrawal on the "Saved Coins" page
 * Add routes to update and delete deposits
-* Fix bug of user being able to save the coin twice into the database and therefore have it display twice on saved coins page
-* Hide sign-in and sign-up buttons when the user is signed in
-* Link indicators to charts for the coin
 * Add  a Total column under the user's logged deposits so user can see total deposits in that coin
-* Caculate what each user's deposit in fiat/USD equals in that coin/currency (decimal)
+* Show total box on coins page with user's total combined amount invested in cryptocurrency (add up of all coins)
+* Caculate what each user's deposit is in fiat/USD equals in that coin/currency (decimal)
+* Fix bug of user being able to save the coin twice into the database and therefore have it display twice on the saved coins page
+* Hide sign-in and sign-up buttons when the user is signed in
+* Link indicators to charts for the coin searched
+* Add feature so that the current prices are shown live (see axios)
 * Write tests for js files/models
 * Refactor and consolidate code for readability
 
