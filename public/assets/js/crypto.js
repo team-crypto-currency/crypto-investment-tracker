@@ -120,6 +120,7 @@ function renderManyCoins(searchedCoin) {
       if (searchedCoin === response.data.coins[i].name) {
         console.log("user search name match: ", response.data.coins[i].name);
         thisCoin = response.data.coins[i];
+        setCoinButton(thisCoin.name);
         console.log("this coin: ", thisCoin);
       }
     }
@@ -175,7 +176,6 @@ searchBtn.click(function () {
   searchedCoin = searchedCoin.toLowerCase().replace(/\w\S*/g, (w) => (w.replace(/^\w/, (c) => c.toUpperCase())));
   console.log("searchedcoin:",searchedCoin);
   renderManyCoins(searchedCoin);
-  setCoinButton(searchedCoin);
 });
 
 
@@ -253,6 +253,8 @@ function renderLandingCoin() {
 
 let buttonList = [];
 const buttonDump = $(".buttonDump");
+
+// on search button click, append search item to button list
 function setCoinButton(searchBarCoin){
 
   const newButton = $("<button class='py-2 px-4 h-10 w-80 border-l-4 border-r-4 border-green-500 bg-black rounded-full text-white'>").text(searchBarCoin);
@@ -265,10 +267,12 @@ function setCoinButton(searchBarCoin){
   if (coinHistory.indexOf(searchBarCoin) === -1){
     coinHistory.push(searchBarCoin);
     window.localStorage.setItem("coin-name", JSON.stringify(coinHistory));
-    // $(buttonDump).append(newButton);
+    $(buttonDump).append(newButton);
   }
+
 }
 
+// on initial load of page, display local storage
 displayLocalButton();
 function displayLocalButton(){
   const coinHistory = JSON.parse(window.localStorage.getItem("coin-name")) || [];
