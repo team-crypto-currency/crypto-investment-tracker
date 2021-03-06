@@ -46,7 +46,7 @@ Simply click on the deployed application link and type the name of your favorite
 ## Code Snippets
 ### Axios
 ```
-// Axios calls to bybass cors error in the front-end
+// Axios call to bybass cors error in the front-end
 
   // RSI
   app.get("/api/coin/rsi/:coin", (req, res) => {
