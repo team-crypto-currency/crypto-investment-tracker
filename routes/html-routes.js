@@ -20,7 +20,7 @@ module.exports = (app) => {
       if (dbCoin.length === 0){
         dbCoin = [{
           dataValues: {
-            name: "You don't have any coins saved yet! Return to Dashboard to search and save coins.",
+            name: "You don't have any coins saved yet! Return to the Dashboard to search and save coins.",
           }}];
         res.render("coins", {coins: dbCoin});
         console.log("nothing saved");
