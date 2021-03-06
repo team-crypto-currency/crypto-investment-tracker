@@ -111,6 +111,7 @@ module.exports = function(req, res, next) {
 * Add feature for the ability for the user to log a deposit and log a withdrawal on the "Saved Coins" page
 * Add routes to update and delete deposits
 * Fix bug of user being able to save the coin twice into the database and therefore have it display twice on saved coins page
+* Hide sign-in and sign-up buttons when the user is signed in
 * Add  a Total column under the user's logged deposits so user can see total deposits in that coin
 * Caculate what each user's deposit in fiat/USD equals in that coin/currency (decimal)
 * Write tests for js files/models
