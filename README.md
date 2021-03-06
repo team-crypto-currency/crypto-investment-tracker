@@ -46,7 +46,7 @@ Simply click on the deployed application link and type the name of your favorite
 ## Code Snippets
 ### Axios
 ```
-// Axios calls to bybass cors error in the front-end
+// Axios call to bybass cors error in the front-end
 
   // RSI
   app.get("/api/coin/rsi/:coin", (req, res) => {
@@ -68,6 +68,7 @@ Simply click on the deployed application link and type the name of your favorite
 ### Passport Middleware
 ```
 // This is middleware for restricting routes a user is not allowed to visit if not logged in
+
 module.exports = function(req, res, next) {
   // If the user is logged in, continue with the request to the restricted route
   if (req.user) {
@@ -106,6 +107,8 @@ module.exports = function(req, res, next) {
 
 ## Next Steps
 * Fix responsiveness for mobile
+* Add a savedCoins js with a function to render first-time user message if they don't have any saved coins
+* Add Keydown feature to search
 * Add ability for user to log a deposit and log a withdrawal on the "Saved Coins" page
 * Add  a Total column under the user's logged deposits so user can see total deposits in that coin
 * Caculate what each user's deposit in fiat/USD equals in that coin/currency (decimal)
