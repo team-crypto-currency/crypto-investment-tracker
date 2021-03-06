@@ -1,7 +1,7 @@
 // Global Variables
 const searchBtn = $(".searchBtn");
 const searchBox = $(".searchFld");
-const saveBtn = $("<button>").text("Save Coin").addClass("save-btn py-2 px-4 border-l-4 border-r-4 border-green-500 bg-black rounded-full text-white");
+const saveBtn = $("<button>").text("Save Coin").addClass("save-btn py-2 px-4 border-l-4 border-r-4 border-green-500 bg-black rounded-full text-white hover:bg-green-500");
 let coinSearch = $(".currentSrch");
 const currentDate = moment().format("M/D/YY");
 const coinDetails = $(".coinDetail");
@@ -257,7 +257,7 @@ const buttonDump = $(".buttonDump");
 // on search button click, append search item to button list
 function setCoinButton(searchBarCoin){
 
-  const newButton = $("<button class='py-2 px-4 h-10 w-80 border-l-4 border-r-4 border-green-500 bg-black rounded-full text-white'>").text(searchBarCoin);
+  const newButton = $("<button class='py-2 px-4 h-10 w-80 border-l-4 border-r-4 border-green-500 bg-black rounded-full text-white hover:bg-green-500'>").text(searchBarCoin);
   buttonList.push(searchBarCoin);
 
   // retrieving local storage array information
@@ -278,7 +278,7 @@ function displayLocalButton(){
   const coinHistory = JSON.parse(window.localStorage.getItem("coin-name")) || [];
 
   for (let i = 0; i < coinHistory.length; i++){
-    const newButton = $("<button class='py-2 px-4 h-10 w-80 border-l-4 border-r-4 border-green-500 bg-black rounded-full text-white space-wide-1'>").text(coinHistory[i]);
+    const newButton = $("<button class='py-2 px-4 h-10 w-80 border-l-4 border-r-4 border-green-500 bg-black rounded-full text-white space-wide-1 hover:bg-green-500'>").text(coinHistory[i]);
     $(buttonDump).append(newButton);
 
     $(newButton).click(function() {
