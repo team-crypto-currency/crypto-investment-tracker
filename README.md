@@ -19,7 +19,7 @@ This is a tool used to empower potential crypto currency investors to explore th
 ## Installation
 ``` There are no special steps required to install this application as it is a live, deployed application with a deployment link. ```
 
-## Deplopyment
+## Deployment
 * Deployed Application URL: https://crypto-investment-tracker.herokuapp.com/
 
 ## Usage
@@ -42,6 +42,13 @@ Simply click on the deployed application link and type the name of your favorite
 * Handlebars.js
 * Passport/passport-local (for user authentication and password hashing)
 * Heroku
+* APIs:
+  * Coin Rainking: https://developers.coinranking.com/api/documentation/
+  * Taapi: https://taapi.io/
+    * MACD: https://taapi.io/indicators/macd/
+    * RSI: https://taapi.io/indicators/relative-strength-index-rsi/
+    * EMA: https://taapi.io/indicators/exponential-moving-average/
+    * SMA: https://taapi.io/indicators/simple-moving-average/
 
 ## Code Snippets
 ### Axios
@@ -110,11 +117,13 @@ module.exports = function(req, res, next) {
 * Add Keydown feature to search
 * Add feature for the ability for the user to log a deposit and log a withdrawal on the "Saved Coins" page
 * Add routes to update and delete deposits
-* Fix bug of user being able to save the coin twice into the database and therefore have it display twice on saved coins page
-* Hide sign-in and sign-up buttons when the user is signed in
-* Link indicators to charts for the coin
 * Add  a Total column under the user's logged deposits so user can see total deposits in that coin
-* Caculate what each user's deposit in fiat/USD equals in that coin/currency (decimal)
+* Show total box on coins page with user's total combined amount invested in cryptocurrency (add up of all coins)
+* Caculate what each user's deposit is in fiat/USD equals in that coin/currency (decimal)
+* Fix bug of user being able to save the coin twice into the database and therefore have it display twice on the saved coins page
+* Hide sign-in and sign-up buttons when the user is signed in
+* Link indicators to charts for the coin searched
+* Add feature so that the current prices are shown live (see axios)
 * Write tests for js files/models
 * Refactor and consolidate code for readability
 
