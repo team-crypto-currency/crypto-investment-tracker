@@ -1,3 +1,7 @@
 .save-btn {
-    margin-left: 10px;
+    float: right !important;
+    position: absolute;
+    left: 70%;
+    transform: translate(-0%, -220%);
+
 }
