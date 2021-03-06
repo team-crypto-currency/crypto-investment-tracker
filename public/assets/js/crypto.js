@@ -1,7 +1,7 @@
 // Global Variables
 const searchBtn = $(".searchBtn");
 const searchBox = $(".searchFld");
-const saveBtn = $("<button>").text("Save Coin").addClass("save-btn py-2 px-4 border-l-4 border-r-4 border-green-500 bg-black rounded-full text-white");
+const saveBtn = $("<button>").text("Save Coin").addClass("save-btn py-2 px-4 border-l-4 border-r-4 border-green-500 bg-black rounded-full text-white hover:bg-green-500");
 let coinSearch = $(".currentSrch");
 const currentDate = moment().format("M/D/YY");
 const coinDetails = $(".coinDetail");
