@@ -3,7 +3,7 @@
 # Crypto Investment Tracker
 
 ## Description
-This is a tool used to empower potential crypto currency investors to explore the prices of different coins without having to sign up for an exchange. The user has the option to save coins and view them on a "Saved Coins" page which is a restricted route via passport-local technology. All user information and saved coins are stored in a MySQL database. This fullstack web application runs on an Express server and is built with the Handlebars.js template engine. The user is allowed to sign up, sign in, and logout using the passport-local technology so that the user's password is automatically hashed and stored safely. 
+This fullstack web  application is a tool used to empower potential crypto currency investors to explore the prices of different coins without having to sign up for an exchange. The user has the option to save coins and view them on a "Saved Coins" page which is a restricted route via passport-local technology. All user information and saved coins are stored in a MySQL database. This fullstack web application runs on an Express server and is built with the Handlebars.js template engine. The user is allowed to sign up, sign in, and logout using the passport-local technology so that the user's password is automatically hashed and stored safely. 
 
 ## Table of Contents
   - [Installation](#installation)
@@ -40,7 +40,7 @@ Simply click on the deployed application link and type the name of your favorite
 * Sequelize 
 * Express.js 
 * Handlebars.js
-* Passport/passport-local (for user authentication and password hashing)
+* Passport/passport-local & bycrypt.js (for user authentication and password hashing)
 * Heroku
 * APIs:
   * Coin Rainking: https://developers.coinranking.com/api/documentation/
