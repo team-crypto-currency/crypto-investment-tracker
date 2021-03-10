@@ -34,8 +34,9 @@ module.exports = (app) => {
     // If the user already has an account send them to the coins page
     if (req.user) {
       res.redirect("/coins");
+    } else {
+      res.render("sign-in");
     }
-    res.render("sign-in");
   });
 
   // Here we've added our isAuthenticated middleware to this route.
