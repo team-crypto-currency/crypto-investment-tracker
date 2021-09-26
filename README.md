@@ -130,8 +130,4 @@ module.exports = function(req, res, next) {
 
 ## Authors
 For additional questions please contact:
-* Chris Hoffman
-* Jayme Mizelle 
-* Hayley Wahlroos 
-* Ruben Sainz 
 * https://github.com/team-crypto-currency
